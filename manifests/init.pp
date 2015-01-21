@@ -75,5 +75,13 @@ class squid3 (
     content => template($use_template),
   }
 
+  exec {'regenerate_cache_dirs':
+    command => 'squid -z',
+    refreshonly => true,
+    path => ['/sbin', '/usr/sbin'],
+  }
+
+  Service['squid3_service']
+  ~> Exec['regenerate_cache_dirs']
 }
 
