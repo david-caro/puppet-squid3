@@ -5549,3 +5549,7 @@ forwarded_for <%= @forwarded_for %>
 #Default:
 # max_filedescriptors 0
 
+# user-defined configuration settings from config_hash
+<% @config_hash.each do |k,v| -%>
+<%= "%*s"%[-30,k] %> <%= v %>
+<% end -%>
